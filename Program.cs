@@ -67,9 +67,75 @@
 //  4 3 4 1 => 2 + 3 + 5 = 10
 //  2 9 5 4
 
-int [,] array = new int[3,4];
+// int [,] array = new int[3,4];
 
-void GetArray()
+// void GetArray()
+// {
+//     for (int i = 0; i < array.GetLength(0); i++)
+//     {
+//         for (int j = 0; j <  array.GetLength(1); j++)
+//         {
+//         array[i,j]= new Random().Next(0,10);
+
+//         }
+//     }
+// }
+
+// void PrintArray()
+// {
+//     for (int i = 0; i < array.GetLength(0); i++)
+//     {
+//         for (int j = 0; j <  array.GetLength(1); j++)
+//         {
+//             System.Console.Write(array[i,j]+ " \t ");
+//         }
+//         System.Console.WriteLine();
+//     }
+// }
+
+// int GetSum()
+// {
+//     int sum= 0;
+
+//     for (int i = 0; i < array.GetLength(0); i++)
+//     {
+//         for (int j = 0; j <  array.GetLength(1); j++)
+//         {
+//             if(i==j)    
+//             {
+//                 sum += array[i,j];
+//             }
+//         }
+//     }
+//     return sum;
+// }
+
+// GetArray();
+// PrintArray();
+
+// System.Console.WriteLine(GetSum());
+
+
+// Задайте двумерный массив из целых чисел. Сформируйте новый
+// одномерный массив, состоящий из средних арифметических
+// значений по строкам двумерного массива.
+// Пример
+// 2 3 4 3
+// 4 3 4 1 => [3 3 5]
+// 2 9 5 4
+
+
+int[,] CreateArray()
+{
+    int [,] array = new int[4,5];
+    return array;
+}
+
+int[,] matrix= CreateArray();
+
+double [] array2 = new double[matrix.GetLength(0)];
+
+void GetArray(int[,] array)
 {
     for (int i = 0; i < array.GetLength(0); i++)
     {
@@ -81,19 +147,19 @@ void GetArray()
     }
 }
 
-void PrintArray()
+void PrintArray(int[,] array)
 {
     for (int i = 0; i < array.GetLength(0); i++)
     {
         for (int j = 0; j <  array.GetLength(1); j++)
         {
-            System.Console.Write(array[i,j]+ " \t ");
+            System.Console.Write(array[i,j]+ "\t");
         }
         System.Console.WriteLine();
     }
 }
 
-int GetSum()
+void GetSum(int[,] array)
 {
     int sum= 0;
 
@@ -101,16 +167,23 @@ int GetSum()
     {
         for (int j = 0; j <  array.GetLength(1); j++)
         {
-            if(i==j)    
-            {
-                sum += array[i,j];
-            }
+            sum+= array[i,j];
         }
+        array2[i] = (double) sum/array.GetLength(1);
     }
-    return sum;
 }
 
-GetArray();
-PrintArray();
+void PrintArray2()
+{
+    System.Console.WriteLine();
 
-System.Console.WriteLine(GetSum());
+    for (int i = 0; i < array2.Length; i++)
+    {
+        System.Console.WriteLine(array2[i]+ " ");
+    }
+}
+
+GetArray(matrix);
+PrintArray(matrix);
+GetSum(matrix);
+PrintArray2();
